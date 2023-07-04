@@ -1,0 +1,15 @@
+<p >rooms works!</p>
+
+<div [hidden]="isactive">
+    <h1 [innerText]="name"></h1>
+    <h1>hello this is from rooms component!!</h1>
+</div>
+
+<button (click)="toggle()">Click</button>
+<div *ngIf="roomsdata.availableRooms >0">
+    <h1>rooms availableRooms</h1>
+    <div>{{roomshasselected | json}}</div>
+    <HInvApp-rooms-list [rooms]="roomsList" (roomsSelected)="selectRoom($event)"> </HInvApp-rooms-list>
+
+   
+</div>
