@@ -7,13 +7,15 @@ import { RoomsComponent } from './rooms/rooms.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RoomsListComponent } from './rooms/rooms-list/rooms-list.component';
 import { DemoComponent } from './demo/demo.component';
+import { CkeckComponent } from './rooms/ckeck/ckeck.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RoomsComponent,
     RoomsListComponent,
-    DemoComponent
+    DemoComponent,
+    CkeckComponent
   ],
   imports: [
     BrowserModule,

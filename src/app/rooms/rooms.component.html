@@ -4,12 +4,14 @@
     <h1 [innerText]="name"></h1>
     <h1>hello this is from rooms component!!</h1>
 </div>
+<button class="btn btn-primary" (click)="addRoom()">addRoom</button>
 
-<button (click)="toggle()">Click</button>
+<button (click)="toggle()" >Click</button>
 <div *ngIf="roomsdata.availableRooms >0">
     <h1>rooms availableRooms</h1>
     <div>{{roomshasselected | json}}</div>
-    <HInvApp-rooms-list [rooms]="roomsList" (roomsSelected)="selectRoom($event)"> </HInvApp-rooms-list>
+    <HInvApp-rooms-list [rooms]="roomsList" [name]="name" (roomsSelected)="selectRoom($event)"> </HInvApp-rooms-list>
 
    
 </div>
+<HInvApp-ckeck></HInvApp-ckeck>

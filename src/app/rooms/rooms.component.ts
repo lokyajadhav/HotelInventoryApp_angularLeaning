@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { rooms, roomsList } from './rooms';
 
 @Component({
   selector: 'HInvApp-rooms',
   templateUrl: './rooms.component.html',
-  styleUrls: ['./rooms.component.css']
+  styleUrls: ['./rooms.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RoomsComponent implements OnInit {
     name="Lokya Naik";
@@ -36,7 +37,19 @@ export class RoomsComponent implements OnInit {
   toggle()
   {
     this.isactive=!this.isactive;
+   // this.name="'lokya Naik, you made it bro!"
   }
+  addRoom()
+    {
+      const room: roomsList={
+        roomRent:33000,
+        roomType:'AC Room',
+        checkInDate:new Date(12-2-2023),
+        checkOutDate: new Date(12-3-2023)
+      }
+
+     this.roomsList=[...this.roomsList,room]
+    }
   roomshasselected!: roomsList;
   selectRoom(rooms: roomsList)
   {
