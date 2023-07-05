@@ -1,0 +1,78 @@
+What is lycycle hook?
+    the series of stages a component goes through from initialization to destruction.
+
+CONTRUCTOR:
+    it is not part of the hooks, but it will executed before all the hooks for initialization(very rare), mostly used for dependency injection.
+
+ngOnChages():
+    if the first hook, called ofter the bound input property changed. it is only used if the component has input property.
+    It will be only called if the component has input property.
+
+         export class Component implements OnInit, OnChages {
+                   
+                    ngOnChanges(): void {
+                        //  ngOnChanges called
+                    }
+                    
+                    ngOnInit(): void {
+                        // ngOnInit called
+                    }
+                    
+
+            }
+
+ngOnInit():
+    called once the component is initialized and its inputs have been bound.
+    mostly we use this is for initialization.
+    It is a good place to perform setup tasks, such as retrieving data from a service or initializing component properties.
+    Is is only called once.   
+        export class Component implements OnInit {
+                   
+                    ngOnInit(): void {
+                        // initialization logic goes here.
+                    }
+
+            }
+
+
+            
+ngDoCheck():
+    called during any change detection run.
+
+ngAfterContentInit():
+    called after the ng-content has been projected into view.
+
+            export class Component implements OnInit {
+                   
+                    ngOnInit(): void {
+                        // initialization logic goes here.
+                    }
+
+            }
+
+
+ngAfterContentChecked():
+    called every time once the projected content has been checked.
+
+ngAfterViewInit():
+    called after component(child) view has been initialized.
+
+
+ngAfterViewChecked():
+    called every time once the component(child) view is ckecked.
+
+ngOnDestroy():
+    called when the component is about to destroy.
+
+
+Why should we use ngOnInit() for initialization over CONTRUCTOR?
+    While both the constructor and ngOnInit() method can be used for component initialization tasks,
+    it is recommended to use ngOnInit() for such purposes.
+
+    There are several reasons for this:
+
+        Timing: The constructor is called when the object is created, even before Angular initializes the component's data bindings and input properties.
+        On the other hand, ngOnInit() is called after the component's data bindings have been resolved, making it the appropriate place to perform initialization tasks that depend on input properties and other data-bound values.
+
+        Access to Input Properties: In ngOnInit(), you can be sure that the component's input properties are already available and initialized.
+        This is not guaranteed in the constructor since input properties might not have been set at that point.
