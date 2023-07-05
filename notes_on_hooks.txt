@@ -182,10 +182,27 @@ What is content and View?
 
                 lets assume some html code present in the child component.
                 we will render that is in parent using their component name i.e <c_name></c_name>
-                here we will give name to the reference i.e <c_name > here goes the content whick can be used by child component</c_name>
+                here we will give data that will rendered using ng-content i.e <c_name > here goes the content whick can be used by child component</c_name>
 
                 now in child component:
                     <div>
-                        <ng-content></ng-content> 
+                        <ng-content></ng-content>  // here we get the value that sent from parent.
                         <p >this is msg from div from child/same component</p>
                     </div>
+
+                if we wnat to send multiple values  from parent...
+                    we should use class same like css.
+                       i.e 
+                       <c_name > 
+                       <h1 class="test1">here goes the content whick can be used by child component</h1>
+                       <h1 class="test2">here goes the content whick can be used by child component</h1>
+
+                       </c_name>
+                    
+                    now in child component:
+                    <div>
+                        <ng-content select=".test1"></ng-content>  // here we get the value that sent from parent.
+                        <p >this is msg from div from child/same component</p>
+                        <ng-content select=".test2"></ng-content> 
+                    </div>
+                
