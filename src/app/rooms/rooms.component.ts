@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
 import { rooms, roomsList } from './rooms';
+import { CkeckComponent } from './ckeck/ckeck.component';
 
 @Component({
   selector: 'HInvApp-rooms',
@@ -9,7 +10,7 @@ import { rooms, roomsList } from './rooms';
 })
 export class RoomsComponent implements OnInit {
     name="Lokya Naik";
-
+  @ViewChild("counterTest")child!:CkeckComponent;
   //constructor(){}
   isactive=false;
   roomsdata!: rooms;
@@ -32,7 +33,7 @@ export class RoomsComponent implements OnInit {
       }
     ]
 
-    
+    console.log("patent init() called!!")
   }
   toggle()
   {
@@ -76,5 +77,14 @@ export class RoomsComponent implements OnInit {
   //   state:"ts",
   //   country:"india"
   // }
+  inc()
+  {
+    this.child.inc();
+
+  }
+  dec()
+  {
+    this.child.dec();
+  }
 }
 

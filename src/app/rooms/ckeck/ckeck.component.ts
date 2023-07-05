@@ -6,9 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ckeck.component.css']
 })
 export class CkeckComponent implements OnInit {
-  name: string="from check name"
+  public counter: number=0;
   ngOnInit(): void {
     
+  }
+  inc()
+  {
+    this.counter++;
+  
+  }
+  dec()
+  {
+    this.counter--;
   }
 
 }

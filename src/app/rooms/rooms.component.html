@@ -11,7 +11,10 @@
     <h1>rooms availableRooms</h1>
     <div>{{roomshasselected | json}}</div>
     <HInvApp-rooms-list [rooms]="roomsList" [name]="name" (roomsSelected)="selectRoom($event)"> </HInvApp-rooms-list>
-
+    
+    <button (click)="inc()">increment</button>
+    <button (click)="dec()">decrement</button>
+    <h1>Counter : {{child?.counter}}</h1>
+    <HInvApp-ckeck #counterTest></HInvApp-ckeck>
    
 </div>
-<HInvApp-ckeck></HInvApp-ckeck>

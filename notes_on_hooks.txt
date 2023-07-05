@@ -13,7 +13,16 @@ ngOnChages():
                     ngOnChanges(): void {
                         //  ngOnChanges called
                     }
-                    
+
+
+                    //lets say we want to perform specific operation on the changes occured:
+                             ngOnChanges(changes: SimpleChanges): void {
+                                //  ngOnChanges called
+                                console.log(changes) // it will give the entire change info of parent such as currentValue, firstChage, previousValue.
+                                console.log(changes.currentValue) // it will give the currentValue value of the input property.
+                                console.log(changes.firstChage) // it will store the boolean value, tells about if the change made first time.
+                            }
+
                     ngOnInit(): void {
                         // ngOnInit called
                     }
@@ -38,6 +47,10 @@ ngOnInit():
             
 ngDoCheck():
     called during any change detection run.
+    it will run every time if the data changes.
+         ngDoCheck(): void {
+            //  ngDoCheck called
+        }
 
 ngAfterContentInit():
     called after the ng-content has been projected into view.
@@ -76,3 +89,103 @@ Why should we use ngOnInit() for initialization over CONTRUCTOR?
 
         Access to Input Properties: In ngOnInit(), you can be sure that the component's input properties are already available and initialized.
         This is not guaranteed in the constructor since input properties might not have been set at that point.
+
+
+
+What is content and View?
+
+        VIEW:
+            The "view" refers to the template and the portion of the component's DOM that is controlled by the component itself.
+            It includes the HTML structure, bindings, directives, and any other elements defined within the component's template.
+
+                <div>
+                <h1>Welcome to the App!</h1>
+                <app-child></app-child>  //child component which can be accessed here
+                </div>
+            
+            @ViewChild:
+                        ViewChild is a decorator and a mechanism in Angular used to access a reference to an element or component within a component's view.
+                        It allows you to query and retrieve a reference to a child component, element, or directive in your component's template.
+
+                        Demonstration:
+                                lets assume this div may be in the same Component
+
+                                    <div>
+                                        <p #msg>this is from div from child/same component</p>    //NOTE: we can assign a same ref for any number of tags!
+                                        <p #msg>this is onother msg from div from child/same component</p>
+                                    </div>
+
+                                lets assume now you want to access the div from the same component!
+
+                                Note: here we need ngAfterViewInit, it help us to give the date after initialization.
+
+                                     export class Component implements OnInit, AfterViewInit {
+
+                                                @ViewChild('msg') message:ElementRef;  // here with help of @ViewChild we are we are refering the data to message var, and it the element data so  we should  use ElementRef.
+                                                ngOnInit(): void {
+                                                    // initialization logic goes here.
+                                                }
+
+                                                ngAfterViewInit: void{
+                                                               // console.log(msg)
+                                                               // here we can make chages to the accessed data as we want:)
+                                                               msg.nativeElement.style.color="red"  // this is only applied to the first msg. as we are using ViewChild.
+                                                }
+
+                                        }
+                                Note: ViewChild only give access to first element of the referenced elements. we can not modifie if the same reference is given to the multiple elements.
+                                      this problem will be overcome by ViewChildren. it will give list of referenced elements, so that we can make changes for any element. refer for below example.
+
+                                    export class Component implements OnInit, AfterViewInit {
+
+                                                @ViewChildren('msg') message:QueryList<any>;  // here with help of @ViewChildren we are we are refering the data to message var, and it will the list of element data so we should use  QueryList.
+                                                ngOnInit(): void {
+                                                    // initialization logic goes here.
+                                                }
+
+                                                ngAfterViewInit: void{
+                                                               // console.log(msg)
+                                                               // here we can make chages to the accessed data as we want:)
+                                                               msg.first.nativeElement.style.color="red"  // this is only applied to the first msg. as we are using ViewChildren.
+                                                               msg.last.nativeElement.style.color="green"  // this is only applied to the last msg. as we are using ViewChildren.
+
+                                                }
+
+                                        }
+                        
+                                lets assume now you want to access the div from the diff component!
+
+                                lets assume some html code present in the child component.
+                                we will render that is in parent using their component name i.e <c_name></c_name>
+                                here we will give name to the reference i.e <c_name #ref_name></c_name>
+
+                                    export class Component implements OnInit, AfterViewInit {
+
+                                                @ViewChildren('ref_name') Child_var:ChildComponent_ClassName;  // here with help of @ViewChildren we are we are refering the data to Child_var, and it will the entire component so we should use  their ChildComponent_ClassName.
+                                                ngOnInit(): void {
+                                                    // initialization logic goes here.
+                                                }
+
+                                                ngAfterViewInit: void{
+                                                               // console.log(msg)
+                                                               // here we can make chages to the accessed data as we want:)
+
+                                                }
+                                                //Note: we can access the methods present in the child component using Child_var.
+
+                                        }
+        
+
+        CONTENT Projection:
+            Content Projection, also known as transclusion, is a powerful feature in Angular that allows you to pass and project content from a parent component's template into a child component's template.
+            It provides flexibility in composing components and allows for dynamic content injection. it allows us reusability of the components dynamically.
+
+                lets assume some html code present in the child component.
+                we will render that is in parent using their component name i.e <c_name></c_name>
+                here we will give name to the reference i.e <c_name > here goes the content whick can be used by child component</c_name>
+
+                now in child component:
+                    <div>
+                        <ng-content></ng-content> 
+                        <p >this is msg from div from child/same component</p>
+                    </div>
