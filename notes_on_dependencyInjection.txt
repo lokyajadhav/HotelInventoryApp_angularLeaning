@@ -1,0 +1,32 @@
+What are dependencies?
+    dependencies are the service or object needed by the class to perform some functions.
+
+dependency injection?
+    provinding/injecting required depe to the clss is called dependency injection.
+    angular has built-in dependency injection support.
+
+services:
+        services are the place where the business logic is written, and it will be used where ever the logic is required.
+        CREATING SERVICE:
+            -->ng g s service_name;
+        then we will write all the business login inside the particular service and we will inject when we required.
+            --injecting dependency--
+                in class, we use constructor to inject dependencies.
+                ex:
+                constructor(service:service_Class_Name)
+                {
+
+                }
+            Note: genarally all the service creates single instance, but if we reqires seperate instance for any particular component we can add below code in @Component:
+                'Providers:[service_Class_Name]'
+
+
+
+DI Providers:-
+    there are 3 types of Providers that have been offered..
+    \1. class based Providers
+    \2. value Providers
+    \3. factory Providers
+
+    \1. class based Providers:
+        

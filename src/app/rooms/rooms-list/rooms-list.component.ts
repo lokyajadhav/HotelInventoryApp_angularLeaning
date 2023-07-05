@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, QueryList, SimpleChanges, ViewChild, ViewChildren } from '@angular/core';
+import { AfterContentInit, AfterViewInit, ChangeDetectionStrategy, Component, ContentChild, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, QueryList, SimpleChanges, ViewChild, ViewChildren } from '@angular/core';
 import { roomsList } from '../rooms';
 
 @Component({
@@ -15,6 +15,7 @@ export class RoomsListComponent implements OnInit, AfterViewInit{
   @Input() name: String='';
  
   @Output() roomsSelected= new EventEmitter<roomsList>();
+  
   constructor(){}
   ngOnInit(): void {
     
