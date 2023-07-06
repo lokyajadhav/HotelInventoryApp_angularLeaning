@@ -1,0 +1,68 @@
+HttpClient:
+    it the service provided by the angular to intaract with api's.
+    it uses RxJs internally.
+
+SETTING UP HttpClient:
+    1. we need to import HttpClientModule. it should be imported in the App.module because we this for entire application.
+            -->import {HttpClientModule} from '@angular/common/http'
+            --> add 'HttpClientModule' in imports list.
+    2. create proxy.conf.json inside src. and configure it. refer below..
+        {
+            "/api": {
+            "target": "http://localhost:3000", // backed port
+            "secure": false
+            }
+        }
+        now add configuratoin path inside the angular.json.-- inside serve--> developemt--> proxyConfig: 'src/proxy.config.json'
+        that's it!!!
+
+RxJs And Observabls:
+    Rxjs is library for writing reactive programming.
+    Observabls are stream of data to which we can subcribe.
+
+HttpClient:
+    HttpClient is a module provided by Angular for making HTTP requests.
+    It is used to send HTTP requests to servers and receive the responses.
+    HttpClient simplifies the process of making AJAX calls and handling HTTP responses.
+    It provides methods such as get(), post(), put(), delete(), etc., for different HTTP methods.
+    HttpClient returns an Observable for each HTTP request, allowing you to subscribe to it and handle the response asynchronously.
+    HttpClient handles low-level details like request headers, response parsing, and error handling.
+    It is part of the @angular/common/http module.
+
+RxJS:
+    RxJS (Reactive Extensions for JavaScript) is a library for reactive programming using observables.
+    It provides a set of powerful tools and operators for working with asynchronous data streams.
+    RxJS brings the concept of observables to JavaScript and allows you to work with streams of data over time.
+    It provides operators for transforming, filtering, merging, and combining data streams.
+    Observables in RxJS are the core concept and primary building blocks for handling asynchronous data.
+    RxJS is not specific to Angular and can be used in any JavaScript project.
+    It simplifies handling asynchronous data and provides a more declarative and composable approach compared to traditional callbacks or promises.
+
+Observables:
+    Observables are the foundation of RxJS and represent a stream of data that can be observed over time.
+    An observable is a sequence of values that can be emitted asynchronously.
+    Observables can emit zero or more values and can be finite or infinite.
+    They allow you to perform various operations on the emitted values, such as mapping, filtering, merging, combining, and more.
+    Observables are cancellable and allow you to subscribe to them to receive values and handle asynchronous operations.
+    Observables are a key part of reactive programming and enable you to write code that reacts to data changes over time.
+    They provide a powerful mechanism for handling asynchronous tasks and managing complex data flows.
+
+Asynchronous data streams:
+    Asynchronous data streams refer to sequences of data that are emitted asynchronously over time.
+    In the context of reactive programming and observables, 
+    asynchronous data streams represent a continuous flow of data that is not immediately available or delivered all at once.
+
+
+RxJS operators:
+    1.ShareReplay():
+        it will be used to make the cache of the data getting from a particular request. whenever the same request comes it will not call for the api rather fetch it from the cache.
+            example:
+                Note: we cannot modify the data once we subcribe, so it should done before subcribing to the observable.
+
+                getData$=this.http.get('/hello').pipe(
+                    ShareReplay(1);
+                )
+                so we can use getdata$ from the component if get the data of this endpoint.
+            
+            Async pipe():
+                

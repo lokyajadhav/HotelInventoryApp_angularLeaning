@@ -8,6 +8,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RoomsListComponent } from './rooms/rooms-list/rooms-list.component';
 import { DemoComponent } from './demo/demo.component';
 import { CkeckComponent } from './rooms/ckeck/ckeck.component';
+import { HttpDemoComponent } from './http-demo/http-demo.component';
+import {HttpClientModule} from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -15,12 +17,14 @@ import { CkeckComponent } from './rooms/ckeck/ckeck.component';
     RoomsComponent,
     RoomsListComponent,
     DemoComponent,
-    CkeckComponent
+    CkeckComponent,
+    HttpDemoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

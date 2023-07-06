@@ -1,0 +1,8 @@
+What is the routing?
+    Routing in Angular refers to the process of navigating between different views or pages within an application.
+    Angular provides a powerful routing mechanism that allows you to define routes, associate them with components, and handle navigation between these routes.
+
+setup Router:
+    1. import RouterModule
+    2. configure forRoot once this method allow us to add multiple route config.
+    
