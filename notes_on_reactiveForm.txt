@@ -1,0 +1,8 @@
+Setting up Reactive Form:
+    1.import ReactiveFormModule
+    2.in reactive form we create form using typescript.
+
+Creating Form:
+    Use FormControl to create Form Controls.
+    Use FormGroup to group multiple Controls.
+    Use FormBuilder tobuild complex form.
