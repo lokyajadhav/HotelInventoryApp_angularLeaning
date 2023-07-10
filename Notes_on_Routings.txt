@@ -6,3 +6,20 @@ setup Router:
     1. import RouterModule
     2. configure forRoot once this method allow us to add multiple route config.
     
+Feature Module and Rounting:
+    
+In Angular, a feature module is a module that encapsulates a specific feature or functionality of your application.
+It helps organize and modularize your application by grouping related components, services, and other resources together.
+
+LazyLoading:
+    
+route Gaurds:
+    this gaurds are useful to secure the routes.
+    5 types:
+        1.canActivate
+        2.canActivateChild
+        3.canDeactivate
+        4.canLoad
+        5.Resolve
+    Routing Event:
+        
